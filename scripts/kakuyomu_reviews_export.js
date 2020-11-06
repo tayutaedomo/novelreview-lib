@@ -19,7 +19,7 @@ const { NovelReviews, NovelWriter } = require('../lib/novel');
   const reviews = await novelReviews.scrape(page);
   console.log(JSON.stringify(reviews, null, 2));
 
-  const destPath = path.join(__dirname, '..', '..', 'novelreview', 'data');
+  const destPath = path.join(__dirname, '..', 'data');
   const writer = new NovelWriter(destPath);
   const filename = await writer.writeJsonAll(reviews);
   console.log(filename);
