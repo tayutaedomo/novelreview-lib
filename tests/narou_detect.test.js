@@ -9,14 +9,13 @@ test('NarouNovelReviews detect', async () => {
   await narouReviews.restoreFromFile(jsonPath);
 
   expect(narouReviews.reviews.length).toBe(10);
-  console.log(JSON.stringify(narouReviews, null, 2));
 
-  // const detected = narouReviews.detect({ charCount: 100000 });
-  // expect(detected.length).toBe();
+  const detected = narouReviews.detect({ charCount: 100000 });
+  expect(detected.length).toBe(6);
 
-  // const detected2 = narouReviews.detect({ points: 100 });
-  // expect(detected2.length).toBe();
+  const detected2 = narouReviews.detect({ points: 1000 });
+  expect(detected2.length).toBe(3);
 
-  // const detected3 = narouReviews.detect({ charCount: 100000, points: 100 });
-  // expect(detected3.length).toBe();
+  const detected3 = narouReviews.detect({ charCount: 200000, points: 1000 });
+  expect(detected3.length).toBe(2);
 });
