@@ -19,7 +19,12 @@ const LINE_POST_USER_ID = process.env['LINE_POST_USER_ID'];
 
   const novelReviews = new NovelReviews();
   const reviews = await novelReviews.scrape(page);
-  const detected = await novelReviews.detect();
+
+  const options = {
+    charCount: 100000,
+    points: 300,
+  };
+  const detected = novelReviews.detect(options);
 
   await browser.close();
 
