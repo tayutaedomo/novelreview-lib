@@ -1,7 +1,7 @@
 const path = require('path');
 const puppeteer = require('puppeteer');
 
-const { NarouNovelReviews, NarouNovelWriter } = require('../lib/novel');
+const { NarouReviews, NarouWriter } = require('../lib/novel');
 
 
 const scraping = async (interval) => {
@@ -14,7 +14,7 @@ const scraping = async (interval) => {
 
   const page = await browser.newPage();
 
-  const novelReviews = new NarouNovelReviews();
+  const novelReviews = new NarouReviews();
   const reviews = await novelReviews.scrape(page);
 
   await novelReviews.novelsScraping(page, interval);
@@ -26,7 +26,7 @@ const scraping = async (interval) => {
 
 const exporting = async (reviews) => {
   const destPath = path.join(__dirname, '..', 'data');
-  const writer = new NarouNovelWriter(destPath);
+  const writer = new NarouWriter(destPath);
   return await writer.writeJsonAll(reviews);
 };
 
