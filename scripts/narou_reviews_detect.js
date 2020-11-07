@@ -26,7 +26,7 @@ const scraping = async (interval) => {
     charCount: 200000,
     points: 1000,
   };
-  const reviews = novelReviews.detect();
+  const reviews = novelReviews.detect(options);
 
   return reviews;
 };
