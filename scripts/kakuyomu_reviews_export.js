@@ -1,7 +1,7 @@
 const path = require('path');
 const puppeteer = require('puppeteer');
 
-const { NovelReviews, NovelWriter } = require('../lib/novel');
+const { KakuyomuReviews, KakuyomuWriter } = require('../lib/novel');
 
 
 (async () => {
@@ -15,12 +15,12 @@ const { NovelReviews, NovelWriter } = require('../lib/novel');
 
   const page = await browser.newPage();
 
-  const novelReviews = new NovelReviews();
-  const reviews = await novelReviews.scrape(page);
+  const kakuyomuReviews = new KakuyomuReviews();
+  const reviews = await kakuyomuReviews.scrape(page);
   console.log(JSON.stringify(reviews, null, 2));
 
   const destPath = path.join(__dirname, '..', 'data');
-  const writer = new NovelWriter(destPath);
+  const writer = new KakuyomuWriter(destPath);
   const filename = await writer.writeJsonAll(reviews);
   console.log(filename);
   const filenames = await writer.writeJsonEach(reviews);

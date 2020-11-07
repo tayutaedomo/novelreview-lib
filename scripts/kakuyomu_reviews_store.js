@@ -14,10 +14,11 @@ instances.set('default', gstore);
 gstore.connect(datastore);
 
 
-const { NovelReviews } = require('../lib/novel');
+const { KakuyomuReviews } = require('../lib/novel');
 
 
 (async () => {
+
   const jsonPath = process.argv[2];
   if (! jsonPath) {
     console.log('JSON file path is required.');
@@ -25,11 +26,12 @@ const { NovelReviews } = require('../lib/novel');
   }
 
   try {
-    const novelReviews = new NovelReviews();
-    await novelReviews.restoreFromFile(jsonPath);
-    await novelReviews.saveModels();
+    const kakuyomuReviews = new KakuyomuReviews();
+    await kakuyomuReviews.restoreFromFile(jsonPath);
+    await kakuyomuReviews.saveModels();
 
   } catch(err) {
     console.error(err);
   }
+
 })();

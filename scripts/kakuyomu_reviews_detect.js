@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-const { NovelReviews } = require('../lib/novel');
+const { KakuyomuReviews } = require('../lib/novel');
 const LINE = require('../lib/line');
 
 const LINE_POST_USER_ID = process.env['LINE_POST_USER_ID'];
@@ -17,14 +17,14 @@ const LINE_POST_USER_ID = process.env['LINE_POST_USER_ID'];
 
   const page = await browser.newPage();
 
-  const novelReviews = new NovelReviews();
-  const reviews = await novelReviews.scrape(page);
+  const kakuyomuReviews = new KakuyomuReviews();
+  const reviews = await kakuyomuReviews.scrape(page);
 
   const options = {
     charCount: 100000,
     points: 300,
   };
-  const detected = novelReviews.detect(options);
+  const detected = kakuyomuReviews.detect(options);
 
   await browser.close();
 

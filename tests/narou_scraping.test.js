@@ -13,7 +13,7 @@ test('NarouNovel scraping', async () => {
   const page = await browser.newPage();
 
   const novel = new NarouNovel();
-  novel.url = 'https://ncode.syosetu.com/novelview/infotop/ncode/n9669bk/';
+  novel.infoUrl = 'https://ncode.syosetu.com/novelview/infotop/ncode/n9669bk/';
 
   await novel.scrape(page);
 
