@@ -4,7 +4,7 @@
   "description": "Libraries for novelreview",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/jest tests/*"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
     "moment": "^2.29.1"
   },
   "devDependencies": {
+    "jest": "^26.6.3",
     "puppeteer": "^5.3.1"
   }
 }
